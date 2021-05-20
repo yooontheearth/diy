@@ -28,7 +28,7 @@ Then, access `http://localhost:3000/index`.
 * Zoom - Middle Mouse
 * Move Left/Right a camera - Middle Mouse with Control
 * Move Up/Down a camera - Middle Mouse with Shift
-* Add items - Click an add button in a left pane after 
+* Add items - Click an add button in a left pane after selecting size and length
 * Select an item via a right pane list 
 * Move an item along its axis - Select an item and hold one of its cone and drag it
 * Rotate an item along its axis - Select an item and hold one of its cone and drag it with holding shift
