@@ -1,0 +1,80 @@
+extends layout
+
+block content
+  div#main_vs.glsl
+    = main_vs
+  div#main_fs.glsl
+    = main_fs
+
+  div#black_vs.glsl
+    = black_vs
+  div#black_fs.glsl
+    = black_fs
+
+  div#axis_vs.glsl
+    = axis_vs
+  div#axis_fs.glsl
+    = axis_fs
+
+  div#light_vs.glsl
+    = light_vs
+  div#light_fs.glsl
+    = light_fs
+
+  div#floor_vs.glsl
+    = floor_vs
+  div#floor_fs.glsl
+    = floor_fs
+
+  div#floor2_vs.glsl
+    = floor2_vs
+  div#floor2_fs.glsl
+    = floor2_fs
+
+  div#point_vs.glsl
+    = point_vs
+  div#point_fs.glsl
+    = point_fs
+
+  div#circle_vs.glsl
+    = circle_vs
+  div#circle_fs.glsl
+    = circle_fs
+
+  #root
+    #editor
+      lumber-list(@add="addLumbers" :default-visibility="false" :height="context.height")
+      #canvas-container
+        canvas#main-canvas
+        canvas#overlay
+      right-side-container(:context="context" :handler="context.selectedObjectHandler" :height="context.height")
+
+    #debug-container(v-if="context.debugView")
+      #debug-info
+        div {{ `x:${context.camera.pos.x} y:${context.camera.pos.y} z:${context.camera.pos.z}` }}
+        div {{ `x:${context.camera.angleX} y:${context.camera.angleY}` }}
+
+    #button-container
+      div
+        button(@click="moveCameraToFront") Front
+        button(@click="moveCameraToRight") Right
+        button(@click="moveCameraToBack") Back
+        button(@click="moveCameraToLeft") Left
+        button(@click="moveCameraToTop") Top
+        button(@click="moveCameraToBottom") Bottom
+        button(@click="resetCamera") Reset
+
+      div
+        button(@click="snapMode") Snap
+        button(@click="focusMode" :class="{ 'focus-mode': context.focusMode }") Focus
+        button(@click="subtract") Subtract
+
+      div
+        button(@click="toggleEditMode") Change Mode
+        button(@click="toggleDebugView" :class="{ 'debug-view': context.debugView }") Debug View
+        button(@click="debug") Debug Action
+
+
+append scripts
+  script(type='text/javascript' src='/vendors~diy.bundle.js')
+  script(type='text/javascript' src='/diy.bundle.js')

@@ -1,0 +1,93 @@
+// base 70%, main 25%, accent 5%
+// recipe 33
+$base-color = #e2ecba  // komorebi
+$main-color = #cdd866  // waka-me
+$accent-color1 = #00803d  // satsuki
+$accent-color2 = #559545  // aoba
+$accent-color3 = #cde8e9  // aozora
+$accent-color4 = #94d0c9  // kibou
+
+$gray1 = hsl(0, 0%, 90%)
+$gray2 = hsl(0, 0%, 95%)
+
+// variables
+$small-margin = 3px
+$small-padding = 3px
+
+// common selector
+.selectable
+  cursor: default
+
+// methods
+frame()
+  border: 1px solid $base-color
+
+caption()
+  background-color: $main-color
+  color: $accent-color2
+  padding: $small-padding $small-padding $small-padding $small-padding*2
+  font-weight: bold
+  user-select: none
+
+message()
+  color: $accent-color2
+  padding: $small-padding $small-padding $small-padding $small-padding*2
+
+toggleBar()
+  > .toggle-bar
+    width: 20px
+    caption()
+    &:hover
+      background-color: $accent-color3
+    .selectable
+      transform: rotate(90.0deg)
+      margin: 0 $small-margin
+
+toggleBarAnimation($translateXFrom)
+  .bar-only-enter-active,
+  .bar-only-leave-active
+    transition: all .3s ease
+  .bar-only-enter, .bar-only-leave-to
+    transform: translateX($translateXFrom)
+    width: 0px !important
+
+fadeAnimation()
+  .fade-enter-active,
+  .fade-leave-active
+    transition: opacity .3s ease
+  .fade-enter, .fade-leave-to
+    opacity: 0
+
+iconAction()
+  transition: all 0.3s ease
+  &:hover
+    background-color: $base-color
+    transform: translateY(-2px)
+    box-shadow: 0 2px #aaa
+  &:active
+    transform: translateY(1px)
+    box-shadow: 0 0 #aaa
+
+propertyItem()
+  .item
+    > .caption
+      display: flex
+      align-items: center
+      caption()
+
+    > .prop
+      frame()
+      display: flex
+      align-items: center
+      > *
+      > div:nth-child(1)
+        width: 60px
+        text-align: right
+        padding: 0 3px 0 0
+        user-select: none
+      > div:nth-child(2)
+        flex-grow: 1
+        overflow: hidden
+
+        > input
+          width: 95%

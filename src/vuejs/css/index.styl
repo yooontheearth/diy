@@ -1,0 +1,56 @@
+@import 'common.styl'
+
+body
+  margin: 0px
+  padding: 0px
+  font: 1em "Lucida Grande", Helvetica, Arial, sans-serif
+a
+  color: #00B7FF
+a:hover
+  color: red
+
+div.glsl
+  display: none
+
+#editor
+  display: flex
+
+#canvas-container
+  position: absolute
+  left: 31px    // MEMO : this is the width of the lumber list
+
+  > canvas
+    position: absolute
+  > #overlay
+    z-index: 2
+    pointer-events: none
+
+#debug-container
+  #debug-info
+    border: solid 1px gainsboro
+    border-radius: 3px
+    margin: 18px
+
+    > div
+      padding: 6px
+
+#button-container
+  margin: 6px
+  padding: 3px
+  display: flex
+
+  div
+    width: 150px
+    display: flex
+    flex-direction: column
+    justify-content: flex-start
+    align-items: center
+
+  ^[0] button
+    width: 100px
+    margin: 3px
+
+    &.focus-mode,
+    &.debug-view
+      background-color: $accent-color4
+      color: white
